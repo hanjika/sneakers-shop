@@ -1,12 +1,44 @@
+
+/* ------
+VARIABLES DECLARATION 
+------*/
+
+/* Colors */
+$primary: hsl(26, 100%, 55%);
+$priary-variant: hsl(25, 100%, 94%);
+
+$neutral-dark-blue : hsl(220, 13%, 13%);
+$neutral-dark-greyish-blue : hsl(220, 13%, 13%);
+$neutral-greyish-blue : hsl(220, 14%, 75%);
+$neutral-light-greyish-blue : hsl(223, 64%, 98%);
+$neutral-white: hsl(0, 0%, 100%);
+$neutral-black: hsl(0, 0%, 0%);
+
+/* Typos */
+$body-font-size: 16px;
+$main-font-family: 'Kumbh Sans', sans-serif;
+
+/* Breaking points */
+$desktop: '1440px';
+
+/* ------
+END VARIABLES DECLARATION 
+------*/
+
 body {
-    background-color: aqua;
+    background-color: $neutral-white;
 }
 
 .footer {
     .attribution { 
-        font-size: 11px; text-align: center; 
+        font-size: 0,6875rem;
+        text-align: center; 
     }
     .attribution a { 
         color: hsl(228, 45%, 44%); 
+    }
+
+    @media screen and (min-width: $desktop) {
+        background-color: red;
     }
 }
