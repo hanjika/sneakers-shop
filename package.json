@@ -1,0 +1,26 @@
+{
+  "name": "sneakers-shop",
+  "version": "1.0.0",
+  "description": "- Create a public repository: `sneakers-shop` - Axel and Hanna - Deadline: 12/10/2021 - 17:00",
+  "source": "src/index.html",
+  "browserslist": "> 0.5%, last 2 versions, not dead",
+  "scripts": {
+    "start": "parcel",
+    "build": "parcel build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hanjika/sneakers-shop.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hanjika/sneakers-shop/issues"
+  },
+  "homepage": "https://github.com/hanjika/sneakers-shop#readme",
+  "devDependencies": {
+    "@parcel/transformer-image": "^2.0.0-rc.0",
+    "parcel": "^2.0.0-rc.0"
+  }
+}
