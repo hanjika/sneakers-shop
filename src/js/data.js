@@ -20,5 +20,3 @@ export const SNEAKER = [
         'thumbnail': '../src/images/image-product-4-thumbnail.jpg'
     }
 ]
-
-console.log(SNEAKER[0].id);
