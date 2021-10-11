@@ -1,4 +1,26 @@
+/* ------
+VARIABLES DECLARATION 
+------*/
+/* Colors */
+/* Typos */
+/* Breaking points */
+/* ------
+END VARIABLES DECLARATION 
+------*/
 body {
-  background-color: aqua;
+  background-color: white;
+}
+
+.footer .attribution {
+  font-size: 0, 6875rem;
+  text-align: center;
+}
+.footer .attribution a {
+  color: #3e52a3;
+}
+@media screen and (min-width: 1440px) {
+  .footer {
+    background-color: red;
+  }
 }
 /*# sourceMappingURL=index.c039f583.css.map */
