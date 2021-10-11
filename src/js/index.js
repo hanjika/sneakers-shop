@@ -1,0 +1,1 @@
+import { SNEAKER } from './data'
