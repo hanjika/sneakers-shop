@@ -40,7 +40,58 @@ body {
     @media screen and (min-width: $desktop) {
         max-width: 1200px;
         margin: 0 auto;
-        background-color: crimson;
+    }
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+
+    .actions {
+        display: flex;
+        align-items: center;
+    }
+
+    .shopping-cart-btn,
+    .profile-btn {
+        width: 35px;
+
+        & > img {
+            width: 100%;
+        }
+    }
+
+    .navigation-menu {
+        position: fixed;
+        top:  0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 200px;
+        background-color: $neutral-white;
+
+        .close-menu-btn {
+            margin: 1rem 0;
+            padding-left: 1.75rem;
+        }
+
+        .links {
+            display: flex;
+            flex-direction: column;
+            padding: 1rem;
+
+            & a {
+                color: $neutral-dark-blue;
+                font-weight: 700;
+                text-decoration: none;
+                padding: .75rem;
+            }
+
+        }
+
+
+
+
     }
 }
 
