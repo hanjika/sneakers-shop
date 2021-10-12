@@ -1,5 +1,6 @@
 import { SNEAKER } from './data';
 import { imageToLeft, imageToRight, changeImage, displayLightbox } from './slider';
+import { openNavMenu, closeNavMenu } from './nav'
 
 /* Slider buttons */
 
@@ -27,7 +28,7 @@ closeBtn.addEventListener('click', () => {
     lightbox.style.display = 'none';
 });
 
-const closeBtnImg
+// const closeBtnImg
 
 const leftArrowBtn = document.createElement('button');
 leftArrowBtn.classList.add('lightbox-left-btn');
@@ -46,3 +47,12 @@ const sliderSection = document.querySelector('.slider').cloneNode(true);
 btnArea.appendChild(closeBtn);
 lightbox.appendChild(btnArea);
 lightbox.appendChild(sliderSection);
+
+
+/*  Nav */
+const navMobile =  document.querySelector('.navigation-menu')
+const menuBtn =  document.querySelector('.menu-btn')
+const closeMenuBtn = document.querySelector('.close-menu-btn')
+
+menuBtn.addEventListener('click', () => openNavMenu(navMobile))
+closeMenuBtn.addEventListener('click', () => closeNavMenu(navMobile))
