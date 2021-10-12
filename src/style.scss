@@ -5,7 +5,7 @@ VARIABLES DECLARATION
 
 /* Colors */
 $primary: hsl(26, 100%, 55%);
-$priary-variant: hsl(25, 100%, 94%);
+$primary-variant: hsl(25, 100%, 94%);
 
 $neutral-dark-blue : hsl(220, 13%, 13%);
 $neutral-dark-greyish-blue : hsl(220, 13%, 13%);
@@ -27,6 +27,68 @@ END VARIABLES DECLARATION
 
 body {
     background-color: $neutral-white;
+    font-family: $main-font-family;
+    height: 100vh;
+}
+
+.main {
+    height: 100%;
+    section {
+        height: 75%;
+        display: flex;
+        flex-direction: column;
+        @media screen and (min-width: $desktop) {
+            flex-direction: row;
+            align-items: center;
+        }
+        .slider {
+            .main-image {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-image: url('./images/image-product-1.jpg');
+                background-size: 100% auto;
+                height: 200px;
+                //position: absolute;
+                left: 0;
+                right: 0;
+                @media screen and (min-width: $desktop) {
+                    border-radius: 10px;
+                    background-size: auto 300%;
+                    margin-bottom: 5%;
+                }
+                .slider-buttons {
+                    width: 100%;
+                    display: flex;
+                    justify-content: space-between;
+                    button {
+                        border-radius: 50%;
+                        border: none;
+                        background-color: $neutral-white;
+                        height: 2em;
+                        width: 2em;
+                        margin: 2%;
+                        cursor: pointer;
+                        background-size: contain;
+                    }
+                    @media screen and (min-width: $desktop) {
+                        display: none;
+                    }
+                }
+            }
+            .other-images {
+                display: none;
+                @media screen and (min-width: $desktop) {
+                    display: flex;
+                    justify-content: space-between;
+                    img {
+                        border-radius: 10px;
+                        max-width: 20%;
+                    }
+                }
+            }
+        }
+    }
 }
 
 .footer {
