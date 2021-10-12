@@ -35,6 +35,7 @@ body {
 }
 
 button {
+    background-color: transparent;
     border: none;
 
     @media screen and (min-width: $desktop) {
@@ -104,15 +105,6 @@ button {
             font-weight: 700;
         }
 
-        .minus, 
-        .plus {
-            background-color: transparent;
-            border: none;
-            color: $primary;
-            font-size: 1.5rem;
-            font-weight: 700;
-        }
-
         .add-to-cart-btn {
             width: 100%;
             padding: 1rem;
@@ -125,10 +117,12 @@ button {
 
         .cart-icon {
             margin-right: .2rem;
+
             path {
                 fill: $neutral-white;
             }
-      }
+        }
+    }
 }
 
 .main {
@@ -198,9 +192,5 @@ button {
     }
     .attribution a { 
         color: hsl(228, 45%, 44%); 
-    }
-
-    @media screen and (min-width: $desktop) {
-        background-color: red;
     }
 }
