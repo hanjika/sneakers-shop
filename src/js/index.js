@@ -1,6 +1,7 @@
 import { SNEAKER } from './data';
 import { imageToLeft, imageToRight, changeImage, displayLightbox } from './slider';
 import { openNavMenu, closeNavMenu } from './nav'
+import { toggleShoppingCart } from './shopping-cart'
 
 /* Slider buttons */
 
@@ -56,3 +57,10 @@ const closeMenuBtn = document.querySelector('.close-menu-btn')
 
 menuBtn.addEventListener('click', () => openNavMenu(navMobile))
 closeMenuBtn.addEventListener('click', () => closeNavMenu(navMobile))
+
+
+/* Cart */
+const cart = document.querySelector('.cart')
+const cartBtn =  document.querySelector('.shopping-cart-btn')
+
+cartBtn.addEventListener('click', () => toggleShoppingCart(cart))

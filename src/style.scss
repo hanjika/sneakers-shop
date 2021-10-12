@@ -47,10 +47,14 @@ body {
 .header {
     display: flex;
     justify-content: space-between;
+    align-items: center;
 
     .actions {
+        position: relative;
         display: flex;
         align-items: center;
+        flex-basis: 50%;
+        justify-content: flex-end;
     }
 
     .shopping-cart-btn,
@@ -62,7 +66,29 @@ body {
         }
     }
 
+    .cart {
+        opacity: 0;
+        position: absolute;
+        right: 0;
+        top: 50px;
+        width: 200px;
+        height: 200px;
+        padding: .7rem;
+        background-color: $neutral-white;
+        box-shadow: 0px 0px 20px 0 rgba(0,0,0,0.1);
+
+        .title {
+            padding-bottom: 2px;
+            border-bottom: 1px solid $neutral-greyish-blue;
+        }
+    }
+
+    .show-cart {
+        opacity: 1;
+    }
+
     .navigation {
+        flex-basis: 50%;
         @media screen and (min-width: $desktop) {
             display: flex;
             align-items: center;
