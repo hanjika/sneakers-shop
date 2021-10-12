@@ -456,8 +456,35 @@ function hmrAcceptRun(bundle, id) {
 
 },{}],"23obh":[function(require,module,exports) {
 var _data = require("./data");
+var _slider = require("./slider");
+/* Slider buttons */ document.querySelector(".left-btn").addEventListener("click", ()=>{
+    _slider.imageToLeft();
+});
+document.querySelector(".right-btn").addEventListener("click", ()=>{
+    const current = document.querySelector(".main-image");
+    const classNumber = current.classList[1];
+    let number = parseInt(classNumber);
+    number++;
+    console.log(number);
+    current.style.backgroundImage = 'url("' + _data.SNEAKER[number].enlarged + '")';
+});
+function imageToLeft() {
+    console.log("here");
+    const current = document.querySelector(".main-image");
+    const classNumber = current.classList[1];
+    let number = parseInt(classNumber);
+}
+function imageToRight() {
+    const image = document.querySelector(".main-image");
+    const classNumber = image.classList[1];
+    let number = parseInt(classNumber);
+    number++;
+    console.log(number);
+    image.classList.add("hello");
+    image.style.backgroundImage = 'url("' + _data.SNEAKER[number].enlarged + '")';
+}
 
-},{"./data":"9Iwal"}],"9Iwal":[function(require,module,exports) {
+},{"./data":"9Iwal","./slider":"gtXmp"}],"9Iwal":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "SNEAKER", ()=>SNEAKER
@@ -465,22 +492,22 @@ parcelHelpers.export(exports, "SNEAKER", ()=>SNEAKER
 const SNEAKER = [
     {
         'id': 1,
-        'enlarged': '../src/images/image-product-1.jpg',
+        'enlarged': 'images/image-product-1.jpg',
         'thumbnail': '../src/images/image-product-1-thumbnail.jpg'
     },
     {
         'id': 2,
-        'enlarged': '../src/images/image-product-2.jpg',
+        'enlarged': 'images/image-product-2.jpg',
         'thumbnail': '../src/images/image-product-2-thumbnail.jpg'
     },
     {
         'id': 3,
-        'enlarged': '../src/images/image-product-3.jpg',
+        'enlarged': 'images/image-product-3.jpg',
         'thumbnail': '../src/images/image-product-3-thumbnail.jpg'
     },
     {
         'id': 4,
-        'enlarged': '../src/images/image-product-4.jpg',
+        'enlarged': 'images/image-product-4.jpg',
         'thumbnail': '../src/images/image-product-4-thumbnail.jpg'
     }
 ];
@@ -517,6 +544,27 @@ exports.export = function(dest, destName, get) {
     });
 };
 
-},{}]},["hkXzs","23obh"], "23obh", "parcelRequire2f07")
+},{}],"gtXmp":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "imageToLeft", ()=>imageToLeft
+);
+parcelHelpers.export(exports, "imageToRight", ()=>imageToRight
+);
+var _data = require("./data");
+function imageToLeft() {
+    const current = document.querySelector(".main-image");
+    const classNumber = current.classList[1];
+    const number = parseInt(classNumber);
+}
+function imageToRight() {
+    const current = document.querySelector(".main-image");
+    const number = current.classList[1];
+    current.classList.remove(classNumber);
+    number++;
+    console.log(number);
+}
+
+},{"./data":"9Iwal","@parcel/transformer-js/src/esmodule-helpers.js":"JacNc"}]},["hkXzs","23obh"], "23obh", "parcelRequire2f07")
 
 //# sourceMappingURL=index.227406fc.js.map
