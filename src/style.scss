@@ -19,7 +19,8 @@ $body-font-size: 16px;
 $main-font-family: 'Kumbh Sans', sans-serif;
 
 /* Breaking points */
-$desktop: '1440px';
+//$desktop: '1440px';
+$desktop: '800px';
 
 /* ------
 END VARIABLES DECLARATION 
@@ -32,6 +33,10 @@ END VARIABLES DECLARATION
 body {
     background-color: $neutral-white;
     font-family: $main-font-family;
+}
+
+.main {
+    height: 100%;
 }
 
 button {
@@ -128,66 +133,127 @@ button {
             path {
                 fill: $neutral-white;
             }
-      }
+        }
+    }
 }
 
-.main {
-    height: 100%;
-    section {
-        height: 75%;
-        display: flex;
-        flex-direction: column;
-        @media screen and (min-width: $desktop) {
-            flex-direction: row;
+.slider-section {
+    height: 75%;
+    display: flex;
+    flex-direction: column;
+    margin: 5%;
+    @media screen and (min-width: $desktop) {
+        flex-direction: row;
+        align-items: center;
+    }
+    .slider {
+        .main-image {
+            display: flex;
             align-items: center;
-        }
-        .slider {
-            .main-image {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                background-image: url('./images/image-product-1.jpg');
-                background-size: 100% auto;
-                height: 200px;
-                //position: absolute;
-                left: 0;
-                right: 0;
+            justify-content: center;
+            margin: 0 5% 0 5%;
+            //position: relative;
+            // background-image: url("./images/image-product-1.jpg");
+            // background-size: 100% auto;
+            // height: 200px;
+            // //position: absolute;
+            left: 0;
+            right: 0;
+            .main-photo {
+                width: 100%;
+                // position: absolute;
+                // top: 0;
+                // bottom: 0;
+                //left: 0;
+                //right: 0;
                 @media screen and (min-width: $desktop) {
                     border-radius: 10px;
-                    background-size: auto 300%;
-                    margin-bottom: 5%;
-                }
-                .slider-buttons {
-                    width: 100%;
-                    display: flex;
-                    justify-content: space-between;
-                    button {
-                        border-radius: 50%;
-                        border: none;
-                        background-color: $neutral-white;
-                        height: 2em;
-                        width: 2em;
-                        margin: 2%;
-                        cursor: pointer;
-                        background-size: contain;
-                    }
-                    @media screen and (min-width: $desktop) {
-                        display: none;
-                    }
+                    width: 50%;
+                    margin: 5% 0 5% 0;
+                    cursor: pointer;
                 }
             }
-            .other-images {
-                display: none;
-                @media screen and (min-width: $desktop) {
-                    display: flex;
-                    justify-content: space-between;
+
+            .slider-buttons {
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                z-index: 1;
+                button {
+                    border-radius: 50%;
+                    border: none;
+                    background-color: $neutral-white;
+                    height: 2em;
+                    width: 2em;
+                    margin: 2%;
+                    cursor: pointer;
+                    background-size: contain;
                     img {
-                        border-radius: 10px;
-                        max-width: 20%;
+                        width: 0.5em;
+                    }
+                }
+                @media screen and (min-width: $desktop) {
+                    display: none;
+                }
+            }
+        }
+
+        .other-images {
+            display: none;
+            @media screen and (min-width: $desktop) {
+                display: flex;
+                justify-content: space-between;
+                img {
+                    border-radius: 10px;
+                    max-width: 20%;
+                    cursor: pointer;
+                    .active {
+                        border: 2px;
+                        border-color: $primary;
+                        opacity: 50%;
                     }
                 }
             }
         }
+    }
+}
+
+.lightbox {
+    display: none;
+    background-color: rgba($color: #000000, $alpha: 0.5);
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    .other-images {
+        img {
+            max-width: 10%;
+        }
+    }
+
+    #lightbox-btn-area {
+        width: 60%;
+        display: flex;
+        justify-content: flex-end;
+    }
+    
+    #close-lightbox-btn {
+        background-color: rgba($color: #000000, $alpha: 0.5);
+        color: $neutral-white;
+        font-size: 300%;
+        border: none;
+        cursor: pointer;
+        grid-column: 2;
+        transition: 0.4s;
+    }
+    
+    #close-lightbox-btn:hover {
+        color: $primary;
     }
 }
 
