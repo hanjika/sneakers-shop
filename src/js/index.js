@@ -3,9 +3,9 @@ import { imageToLeft, imageToRight, changeImage, displayLightbox } from './slide
 
 /* Slider buttons */
 
-document.querySelector(".left-btn").addEventListener("click", () => {
-    imageToLeft();
-});
+document.querySelector(".left-btn").addEventListener('click', imageToLeft);
+
+document.querySelector(".right-btn").addEventListener('click', imageToRight);
 
 document.querySelector('.main-photo').addEventListener('click', displayLightbox);
 
@@ -16,33 +16,18 @@ for (const thumbnail of thumbnails) {
 
 /* Lightbox */
 
-const lightbox = document.querySelector('.lightbox');
+const lightboxCloseBtn = document.querySelector('.lightbox-close-btn');
+lightboxCloseBtn.addEventListener('click', () => {
+    document.querySelector('.lightbox').style.display = 'none';
+});  
 
-const btnArea = document.createElement('div');
-btnArea.setAttribute('id', 'lightbox-btn-area');
+const lightboxThumbnails = document.querySelectorAll('.lightbox-thumbnail');
+for (const lbThumbnail of lightboxThumbnails) {
+    lbThumbnail.addEventListener('click', changeImage);
+}
 
-const closeBtn = document.createElement('button');
-closeBtn.setAttribute('id', 'close-lightbox-btn');
-closeBtn.addEventListener('click', () => {
-    lightbox.style.display = 'none';
-});
+document.querySelector(".lightbox-left-btn").addEventListener('click', imageToLeft);
 
-const closeBtnImg
+document.querySelector(".lightbox-right-btn").addEventListener('click', imageToRight);
 
-const leftArrowBtn = document.createElement('button');
-leftArrowBtn.classList.add('lightbox-left-btn');
 
-const leftBtnImage = document.createElement('img');
-leftBtnImage.setAttribute('src', require('../images/icon-previous.svg'));
-
-const rightArrowBtn = document.createElement('button');
-rightArrowBtn.classList.add('lightbox-right-btn');
-
-const rightBtnImage = document.createElement('img');
-rightBtnImage.setAttribute('src', require('../images/icon-previous.svg'));
-
-const sliderSection = document.querySelector('.slider').cloneNode(true);
-
-btnArea.appendChild(closeBtn);
-lightbox.appendChild(btnArea);
-lightbox.appendChild(sliderSection);
