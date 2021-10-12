@@ -34,7 +34,73 @@ body {
     font-family: $main-font-family;
 }
 
+.header,
+.main,
+.footer {
+    @media screen and (min-width: $desktop) {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+
+    .actions {
+        display: flex;
+        align-items: center;
+    }
+
+    .shopping-cart-btn,
+    .profile-btn {
+        width: 35px;
+
+        & > img {
+            width: 100%;
+        }
+    }
+
+    .navigation-menu {
+        position: fixed;
+        top:  0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 200px;
+        background-color: $neutral-white;
+
+        .close-menu-btn {
+            margin: 1rem 0;
+            padding-left: 1.75rem;
+        }
+
+        .links {
+            display: flex;
+            flex-direction: column;
+            padding: 1rem;
+
+            & a {
+                color: $neutral-dark-blue;
+                font-weight: 700;
+                text-decoration: none;
+                padding: .75rem;
+            }
+
+        }
+
+
+
+
+    }
+}
+
+.main {
+    margin-bottom: 1.5rem;
+}
+
 button {
+    background-color: transparent;
     border: none;
 
     @media screen and (min-width: $desktop) {
@@ -44,6 +110,11 @@ button {
 
 .product-description {
     padding: 2rem 0;
+
+    @media screen and (min-width: $desktop) {
+        padding: 0 4rem;
+    }
+
     .subtitle {
         color: $primary;
         font-size: .75rem;
@@ -64,6 +135,11 @@ button {
         display: flex;
         align-items: center;
         justify-content: start;
+        
+        @media screen and (min-width: $desktop) {
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+        }
     }
 
     .price {
@@ -87,9 +163,17 @@ button {
         color: $neutral-greyish-blue;
         font-weight: 700;
         text-decoration:line-through;
+
+        @media screen and (min-width: $desktop) {
+            flex-basis: 100%;
+        }
     }
 
     .add-to-cart {
+        @media screen and (min-width: $desktop) {
+            display: flex;
+            justify-content: space-between;
+        }
         .change-quantity {
             display: flex;
             justify-content: space-between;
@@ -97,19 +181,14 @@ button {
             padding: 1rem;
             border-radius: 5px;
             background-color: $neutral-light-greyish-blue;
+
+            @media screen and (min-width: $desktop) {
+                flex-basis: 40%;
+            }
         }
 
         .quantity {
             color: $neutral-black;
-            font-weight: 700;
-        }
-
-        .minus, 
-        .plus {
-            background-color: transparent;
-            border: none;
-            color: $primary;
-            font-size: 1.5rem;
             font-weight: 700;
         }
 
@@ -121,14 +200,20 @@ button {
             color: $neutral-white;
             font-size: 1rem;
             font-weight: 700;
+
+            @media screen and (min-width: $desktop) {
+                flex-basis: 50%;
+            }
         }
 
         .cart-icon {
             margin-right: .2rem;
+
             path {
                 fill: $neutral-white;
             }
-      }
+        }
+    }
 }
 
 .main {
@@ -198,9 +283,5 @@ button {
     }
     .attribution a { 
         color: hsl(228, 45%, 44%); 
-    }
-
-    @media screen and (min-width: $desktop) {
-        background-color: red;
     }
 }
