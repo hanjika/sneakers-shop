@@ -1,18 +1,67 @@
 import { SNEAKER } from './data'
 
-export function imageToLeft() {
-    const current = document.querySelector('.main-image');
-    const classNumber = current.classList[1];
-    const number = parseInt(classNumber);
+export function imageToLeft(e) {
+    const selectedBtn = e.target;
+
+    let currentPic = document.querySelector('.main-photo');
+    if (selectedBtn.classList[0] === 'lightbox-left-btn') {
+        currentPic = document.querySelector('.lightbox-main-photo');
+    }
+    const num = currentPic.classList[1];
+
+    if (num === 'one') {
+        currentPic.setAttribute('src', SNEAKER[0].gallery[3].enlarged);
+        currentPic.classList.remove(num);
+        currentPic.classList.add('four');
+    } else if (num === 'two') {
+        currentPic.setAttribute('src', SNEAKER[0].gallery[0].enlarged);
+        currentPic.classList.remove(num);
+        currentPic.classList.add('one');
+    }  else if (num === 'three') {
+        currentPic.setAttribute('src', SNEAKER[0].gallery[1].enlarged);
+        currentPic.classList.remove(num);
+        currentPic.classList.add('two');
+    }  else if (num === 'four') {
+        currentPic.setAttribute('src', SNEAKER[0].gallery[2].enlarged);
+        currentPic.classList.remove(num);
+        currentPic.classList.add('three');
+    }
+    
+    if (selectedBtn.classList[0] === 'lightbox-left-btn') {
+        activateThumbnails(currentPic);
+    }
 }
 
-export function imageToRight() {
-    const current = document.querySelector('.main-image');
-    const number = current.classList[1];
+export function imageToRight(e) {
+    const selectedBtn = e.target;
 
-    current.classList.remove(classNumber);
-    number++;
-    console.log(number);
+    let currentPic = document.querySelector('.main-photo');
+    if (selectedBtn.classList[0] === 'lightbox-right-btn') {
+        currentPic = document.querySelector('.lightbox-main-photo');
+    }
+    const num = currentPic.classList[1];
+
+    if (num === 'one') {
+        currentPic.setAttribute('src', SNEAKER[0].gallery[1].enlarged);
+        currentPic.classList.remove(num);
+        currentPic.classList.add('two');
+    } else if (num === 'two') {
+        currentPic.setAttribute('src', SNEAKER[0].gallery[2].enlarged);
+        currentPic.classList.remove(num);
+        currentPic.classList.add('three');
+    }  else if (num === 'three') {
+        currentPic.setAttribute('src', SNEAKER[0].gallery[3].enlarged);
+        currentPic.classList.remove(num);
+        currentPic.classList.add('four');
+    }  else if (num === 'four') {
+        currentPic.setAttribute('src', SNEAKER[0].gallery[0].enlarged);
+        currentPic.classList.remove(num);
+        currentPic.classList.add('one');
+    }
+
+    if (selectedBtn.classList[0] === 'lightbox-right-btn') {
+        activateThumbnails(currentPic);
+    }
 }
 
 export function displayLightbox() {
@@ -23,34 +72,48 @@ export function displayLightbox() {
 export function changeImage(e) {
     const selected = e.target;
 
+    let photo = document.querySelector('.main-photo');
+    if (selected.classList[0] === 'lightbox-thumbnail') {
+        photo = document.querySelector('.lightbox-main-photo');
+    }
+
     if (!selected.classList.contains('active')) {
         selected.classList.toggle('active');
         deactivateSiblingImages(selected);
 
-        const photo = document.querySelector('.main-photo');
-
         const num = selected.classList[1];
         if (num === 'one') {
-            photo.setAttribute('src', SNEAKER[0].enlarged);
+            photo.setAttribute('src', SNEAKER[0].gallery[0].enlarged);
         } else if (num === 'two') {
-            photo.setAttribute('src', SNEAKER[1].enlarged);
+            photo.setAttribute('src', SNEAKER[0].gallery[1].enlarged);
         }  else if (num === 'three') {
-            photo.setAttribute('src', SNEAKER[2].enlarged);
+            photo.setAttribute('src', SNEAKER[0].gallery[2].enlarged);
         }  else if (num === 'four') {
-            photo.setAttribute('src', SNEAKER[3].enlarged);
+            photo.setAttribute('src', SNEAKER[0].gallery[3].enlarged);
         }
     }
 }
 
-function displayImage(image) {
-    const img = document.querySelector('#enlarged-img');
-    img.setAttribute('src', image);
+function activateThumbnails(currentPic) {
+    const num = currentPic.classList[1];
+    const allThumbnail = document.querySelectorAll('.lightbox-thumbnail');
 
-    document.querySelector('#popup-frame').style.display = 'flex';
+    for (const tbnail of allThumbnail) {
+        if (tbnail.classList[1] === num) {
+            deactivateSiblingImages(tbnail);
+            if (!tbnail.classList.contains('active')) {
+                tbnail.classList.add('active');
+            }
+        }
+    }
 }
 
 function deactivateSiblingImages(selected) {
-    const allImages = Array.from(document.querySelectorAll('.thumbnail'));
+    let allImages = Array.from(document.querySelectorAll('.thumbnail'));
+    if (selected.classList[0] === 'lightbox-thumbnail') {
+        allImages = Array.from(document.querySelectorAll('.lightbox-thumbnail'));
+    }
+    
     const imageNumber = selected.classList[1];
     const unselectedImages = removeTypeFromArray(allImages, imageNumber);
 
