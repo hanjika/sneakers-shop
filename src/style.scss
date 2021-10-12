@@ -25,10 +25,110 @@ $desktop: '1440px';
 END VARIABLES DECLARATION 
 ------*/
 
+* {
+    box-sizing: border-box;
+}
+
 body {
     background-color: $neutral-white;
     font-family: $main-font-family;
-    height: 100vh;
+}
+
+button {
+    border: none;
+
+    @media screen and (min-width: $desktop) {
+        cursor: pointer
+    }
+}
+
+.product-description {
+    padding: 2rem 0;
+    .subtitle {
+        color: $primary;
+        font-size: .75rem;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+    }
+
+    .title {
+        color: $neutral-black;
+    }
+
+    .description {
+        color: $neutral-greyish-blue;
+        font-weight: 700;
+    }
+
+    .price-details {
+        display: flex;
+        align-items: center;
+        justify-content: start;
+    }
+
+    .price {
+        color: $neutral-black;
+        font-size: 2rem;
+        font-weight: 700;
+    }
+
+    .reduction {
+        margin: 1rem;
+        padding: .2rem .4rem;
+        border-radius: 5px;
+        background-color: $primary-variant;
+        color: $primary;
+        font-weight: 700;
+
+    }
+
+    .old-price {
+        margin-left: auto;
+        color: $neutral-greyish-blue;
+        font-weight: 700;
+        text-decoration:line-through;
+    }
+
+    .add-to-cart {
+        .change-quantity {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            border-radius: 5px;
+            background-color: $neutral-light-greyish-blue;
+        }
+
+        .quantity {
+            color: $neutral-black;
+            font-weight: 700;
+        }
+
+        .minus, 
+        .plus {
+            background-color: transparent;
+            border: none;
+            color: $primary;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .add-to-cart-btn {
+            width: 100%;
+            padding: 1rem;
+            border-radius: 5px;
+            background-color: $primary;
+            color: $neutral-white;
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        .cart-icon {
+            margin-right: .2rem;
+            path {
+                fill: $neutral-white;
+            }
+      }
 }
 
 .main {
