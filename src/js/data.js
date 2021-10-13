@@ -1,5 +1,8 @@
 export const SNEAKER = [
     {
+        title: 'Fall Limited Edition Sneakers',
+        subtitle: 'Sneaker Company',
+        price: 125,
         quantity: 0,
         gallery: [
             {

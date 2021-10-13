@@ -1,7 +1,7 @@
 import { SNEAKER } from './data';
 import { imageToLeft, imageToRight, changeImageWithThumbnail, displayLightbox } from './slider';
 import { openNavMenu, closeNavMenu } from './nav'
-import { toggleShoppingCart } from './shopping-cart'
+import { toggleShoppingCart, openShoppingCart, increaseQuantity, decreaseQuantity, addToCart } from './shopping-cart'
 
 /* Slider buttons */
 
@@ -78,3 +78,23 @@ const cart = document.querySelector('.cart')
 const cartBtn =  document.querySelector('.shopping-cart-btn')
 
 cartBtn.addEventListener('click', () => toggleShoppingCart(cart))
+
+
+/* Add to Cart */
+const quantity = document.querySelector('.quantity')
+const increaseQuantityBtn =  document.querySelector('.plus')
+increaseQuantityBtn.addEventListener('click', () => {
+    quantity.textContent =  increaseQuantity(SNEAKER)
+
+})
+
+const decreaseQuantityBtn =  document.querySelector('.minus')
+decreaseQuantityBtn.addEventListener('click', () => {
+    quantity.textContent =  decreaseQuantity(SNEAKER)
+})
+
+const addToCartBtn = document.querySelector('.add-to-cart-btn')
+addToCartBtn.addEventListener('click', () => {
+    addToCart(SNEAKER)
+    openShoppingCart(cart)
+})
