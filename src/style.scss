@@ -318,7 +318,7 @@ button {
                     width: 100%;
                     @media screen and (min-width: $desktop) {
                         border-radius: 10px;
-                        margin-bottom: 1.5rem;;
+                        margin-bottom: 1.5rem;
                         cursor: pointer;
                     }
                 }
@@ -423,8 +423,6 @@ button {
             .lightbox-slider-buttons {
                 width: 400px;
                 position: absolute;
-                top: 50%;
-                transform: translateY(-20px);
                 .lightbox-left-btn {
                     background-image: url('images/icon-previous.svg');
                     position: absolute;
