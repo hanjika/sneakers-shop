@@ -25,6 +25,7 @@ export const SNEAKER = [
                 'enlarged': require('../images/image-product-4.jpg'),
                 'thumbnail': require('../images/image-product-4-thumbnail.jpg')
             }
-        ]
+        ],
+        removeBtnUrl: require('../images/icon-delete.svg')
     }
 ]

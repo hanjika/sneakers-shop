@@ -55,6 +55,7 @@ function renderProductInCart (product) {
     const cartProductQuantity =  document.createElement('span')
     const cartProductTotal = document.createElement('span')
     const cartProductRemoveBtn =  document.createElement('button')
+    const cartCheckout = document.createElement('button')
 
     cartProduct.classList.add('cart-product')
     cartProductImage.classList.add('cart-product-image')
@@ -64,7 +65,8 @@ function renderProductInCart (product) {
     cartProductPrice.classList.add('cart-product-price')
     cartProductQuantity.classList.add('cart-product-quantity')
     cartProductTotal.classList.add('cart-product-total')
-    cartProductRemoveBtn.classList.add('cart-product-remove')
+    cartProductRemoveBtn.classList.add('cart-product-remove-btn')
+    cartCheckout.classList.add('cart-checkout')
 
     cartProductInfo.appendChild(cartProductTitle)
     cartProductInfo.appendChild(cartProductPriceDetails)
@@ -79,10 +81,13 @@ function renderProductInCart (product) {
 
     cartProductImage.src = product.gallery[0].thumbnail
     cartProductTitle.textContent = product.title
-    cartProductPrice.textContent = product.price
-    cartProductQuantity.textContent = product.quantity
-    cartProductTotal.textContent = product.price * product.quantity
+    cartProductPrice.textContent = `$${product.price}`
+    cartProductQuantity.textContent = `x${product.quantity}`
+    cartProductTotal.textContent = `$${product.price * product.quantity}`
+
+    cartCheckout.textContent = 'Checkout'
 
     orderSummary.innerHTML = ''
     orderSummary.appendChild(cartProduct)
+    orderSummary.appendChild(cartCheckout)
 }
