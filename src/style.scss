@@ -21,10 +21,16 @@ $main-font-family: 'Kumbh Sans', sans-serif;
 /* Breaking points */
 $desktop: '1440px';
 
+
+/*Header */
+
+$headerMobileHeight: 60px;
+$headerDesktopHeight: 80px;
+
 /* Z-index */
 $zIndexLightbox: 4;
 $zIndexNavMobile: 3;
-$zIndexNavDesktop: 2;
+$zIndexNavDesktop: 1;
 $zIndexCart:2;
 $zIndexSlider:1;
 
@@ -63,13 +69,16 @@ button {
 }
 
 .header {
+    width: 100%;
     position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    height: $headerMobileHeight;
     padding: 1rem;
 
     @media screen and (min-width: $desktop) {
+        height: $headerDesktopHeight;
         padding: 2rem;
     }
 
@@ -101,7 +110,6 @@ button {
         transform: translateX(-500px);
         background-color: $neutral-white;
         transition : .3s;
-        background-color: crimson;
 
         @media screen and (min-width: $desktop) {
             position: static;
@@ -109,7 +117,6 @@ button {
             width: auto;
             transform: translateX(0);
             background-color: transparent;
-            background-color: crimson;
         }
 
         .close-menu-btn {
@@ -179,8 +186,8 @@ button {
     .cart {
         opacity: 0;
         position: absolute;
+        top: $headerMobileHeight;
         left: 0;
-        top: 50px;
         width: 90%;
         margin: 0 auto;
         padding: .7rem;
@@ -188,6 +195,8 @@ button {
         box-shadow: 0px 0px 20px 0 rgba(0,0,0,0.1);
 
         @media screen and (min-width: $desktop) {
+            top: $headerDesktopHeight;
+            left: auto;
             right: 0;
             width: 200px;
         }
@@ -320,7 +329,7 @@ button {
         }
         .slider {
             @media screen and (min-width: $desktop) {
-                padding: 0 3rem;
+                padding: 0 2rem;
             }
 
             .main-image {
