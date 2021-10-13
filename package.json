@@ -6,7 +6,7 @@
   "browserslist": "> 0.5%, last 2 versions, not dead",
   "scripts": {
     "start": "parcel",
-    "build" : "rm -rf dist/* && cp src/images/ dist/images/ -R && parcel build",
+    "build": "rm -rf dist/* && cp src/images/ dist/images/ -R && parcel build",
     "deploy": "gh-pages -d dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -23,7 +23,9 @@
   "devDependencies": {
     "@parcel/transformer-image": "^2.0.0-rc.0",
     "@parcel/transformer-sass": "^2.0.0-rc.0",
+    "eslint": "^8.0.0",
     "gh-pages": "^3.2.3",
-    "parcel": "^2.0.0-rc.0"
+    "parcel": "^2.0.0-rc.0",
+    "prettier": "2.4.1"
   }
 }
