@@ -18,7 +18,7 @@ export const SNEAKER = [
             {
                 'id': 3,
                 'enlarged': require('../images/image-product-3.jpg'),
-                 'thumbnail': require('../images/image-product-3-thumbnail.jpg')
+                'thumbnail': require('../images/image-product-3-thumbnail.jpg')
             },
             {
                 'id': 4,
