@@ -209,7 +209,7 @@ button {
     .product-description {
         padding: 2rem;
         @media screen and (min-width: $desktop) {
-            padding: 0 10rem;
+            padding: 0 3rem;
         }
     
         .subtitle {
@@ -319,6 +319,10 @@ button {
             margin: 5% 0 5% 0;
         }
         .slider {
+            @media screen and (min-width: $desktop) {
+                padding: 0 3rem;
+            }
+
             .main-image {
                 display: flex;
                 align-items: center;
@@ -328,7 +332,7 @@ button {
                     width: 100%;
                     @media screen and (min-width: $desktop) {
                         border-radius: 10px;
-                        margin: 5% 0 5% 0;
+                        margin-bottom: 1.5rem;
                         cursor: pointer;
                     }
                 }
@@ -386,7 +390,7 @@ button {
     
     .lightbox {
         display: none;
-        background-color: rgba($color: #000000, $alpha: 0.5);
+        background-color: rgba($color: #000000, $alpha: 0.7);
         height: 100vh;
         width: 100%;
         z-index: 1;
@@ -404,17 +408,20 @@ button {
             align-items: center;
     
             .lightbox-close {
-                width: 50%;
+                width: 400px;
                 display: flex;
                 justify-content: flex-end;
     
                 .lightbox-close-btn {
-                    color: $neutral-white;
-                    font-size: 400%;
                     border: none;
                     cursor: pointer;
                     grid-column: 2;
+                    padding-bottom: 5px;
                     transition: 0.4s;
+                    img {
+                      width: 20px;
+                      filter: $neutral-white;
+                    }
                 }
                 
                 .lightbox-close-btn:hover {
@@ -424,21 +431,25 @@ button {
     
             .lightbox-main-photo {
                 border-radius: 15px;
-                width: 50%;
-                position: relatvive;
-          }
+                width: 400px;
+                position: relative;
+            }
     
             .lightbox-slider-buttons {
-                width: 50%;
-                display: flex;
-                justify-content: space-between;
+                width: 400px;
                 position: absolute;
                 .lightbox-left-btn {
                     background-image: url('images/icon-previous.svg');
+                    position: absolute;
+                    margin: 0;
+                    left: -20px;
                 }
     
                 .lightbox-right-btn {
                     background-image: url('images/icon-next.svg');
+                    position: absolute;
+                    margin: 0;
+                    right: -20px;
                 }
     
                 button {
@@ -448,14 +459,10 @@ button {
                     background-size: 50% 50%;
                     background-repeat: no-repeat;
                     background-position: center;
-                    height: 2em;
-                    width: 2em;
+                    height: 40px;
+                    width: 40px;
                     margin: 2%;
                     cursor: pointer;
-                    transition: 0.4s;
-                    &:hover {
-                        opacity: 50%;
-                    }
                 }
             }
         }
@@ -463,13 +470,13 @@ button {
         .lightbox-other-images {
             display: flex;
             justify-content: center;
-            margin-top: 2%;
-            width: 40%;
+            margin-top: 15px;
+            width: 400px;
             img {
                 max-width: 15%;
-                border-radius: 15px;
+                border-radius: 10px;
                 cursor: pointer;
-                margin: 0 2% 0 2%;
+                margin: 15px;
                 transition: 0.4s;
                 &:hover {
                     opacity: 50%;
