@@ -457,67 +457,161 @@ function hmrAcceptRun(bundle, id) {
 },{}],"23obh":[function(require,module,exports) {
 var _data = require("./data");
 var _slider = require("./slider");
-/* Slider buttons */ document.querySelector(".left-btn").addEventListener("click", ()=>{
-    _slider.imageToLeft();
-});
-document.querySelector(".right-btn").addEventListener("click", ()=>{
-    const current = document.querySelector(".main-image");
-    const classNumber = current.classList[1];
-    let number = parseInt(classNumber);
-    number++;
-    console.log(number);
-    current.style.backgroundImage = 'url("' + _data.SNEAKER[number].enlarged + '")';
-});
-function imageToLeft() {
-    console.log("here");
-    const current = document.querySelector(".main-image");
-    const classNumber = current.classList[1];
-    let number = parseInt(classNumber);
+var _nav = require("./nav");
+var _shoppingCart = require("./shopping-cart");
+/* Slider buttons */ document.querySelector(".left-btn").addEventListener('click', _slider.imageToLeft);
+document.querySelector(".right-btn").addEventListener('click', _slider.imageToRight);
+/* Desktop Features */ if (window.innerWidth >= 700) {
+    document.querySelector('.main-photo').addEventListener('click', _slider.displayLightbox);
+    const thumbnails = document.querySelectorAll('.thumbnail');
+    for (const thumbnail of thumbnails)thumbnail.addEventListener('click', _slider.changeImageWithThumbnail);
+    /* Lightbox */ const lightboxCloseBtn = document.querySelector('.lightbox-close-btn');
+    lightboxCloseBtn.addEventListener('click', ()=>{
+        document.querySelector('.lightbox').style.display = 'none';
+    });
+    const lightboxThumbnails = document.querySelectorAll('.lightbox-thumbnail');
+    for (const lbThumbnail of lightboxThumbnails)lbThumbnail.addEventListener('click', _slider.changeImageWithThumbnail);
+    document.querySelector(".lightbox-left-btn").addEventListener('click', _slider.imageToLeft);
+    document.querySelector(".lightbox-right-btn").addEventListener('click', _slider.imageToRight);
 }
-function imageToRight() {
-    const image = document.querySelector(".main-image");
-    const classNumber = image.classList[1];
-    let number = parseInt(classNumber);
-    number++;
-    console.log(number);
-    image.classList.add("hello");
-    image.style.backgroundImage = 'url("' + _data.SNEAKER[number].enlarged + '")';
+window.addEventListener('resize', resize);
+function resize() {
+    if (window.innerWidth >= 700) {
+        document.querySelector('.main-photo').addEventListener('click', _slider.displayLightbox);
+        const thumbnails = document.querySelectorAll('.thumbnail');
+        for (const thumbnail of thumbnails)thumbnail.addEventListener('click', _slider.changeImageWithThumbnail);
+        /* Lightbox */ const lightboxCloseBtn = document.querySelector('.lightbox-close-btn');
+        lightboxCloseBtn.addEventListener('click', ()=>{
+            document.querySelector('.lightbox').style.display = 'none';
+        });
+        const lightboxThumbnails = document.querySelectorAll('.lightbox-thumbnail');
+        for (const lbThumbnail of lightboxThumbnails)lbThumbnail.addEventListener('click', _slider.changeImageWithThumbnail);
+        document.querySelector(".lightbox-left-btn").addEventListener('click', _slider.imageToLeft);
+        document.querySelector(".lightbox-right-btn").addEventListener('click', _slider.imageToRight);
+    } else document.querySelector('.main-photo').removeEventListener('click', _slider.displayLightbox);
 }
+/*  Nav */ const navMobile = document.querySelector('.navigation-menu');
+const menuBtn = document.querySelector('.menu-btn');
+const closeMenuBtn = document.querySelector('.close-menu-btn');
+menuBtn.addEventListener('click', ()=>_nav.openNavMenu(navMobile)
+);
+closeMenuBtn.addEventListener('click', ()=>_nav.closeNavMenu(navMobile)
+);
+/* Cart */ const cart = document.querySelector('.cart');
+const cartBtn = document.querySelector('.shopping-cart-btn');
+cartBtn.addEventListener('click', ()=>_shoppingCart.toggleShoppingCart(cart)
+);
+/* Add to Cart */ const quantity = document.querySelector('.quantity');
+const increaseQuantityBtn = document.querySelector('.plus');
+increaseQuantityBtn.addEventListener('click', ()=>{
+    quantity.textContent = _shoppingCart.increaseQuantity(_data.SNEAKER);
+});
+const decreaseQuantityBtn = document.querySelector('.minus');
+decreaseQuantityBtn.addEventListener('click', ()=>{
+    quantity.textContent = _shoppingCart.decreaseQuantity(_data.SNEAKER);
+});
+const addToCartBtn = document.querySelector('.add-to-cart-btn');
+addToCartBtn.addEventListener('click', ()=>{
+    _shoppingCart.addToCart(_data.SNEAKER);
+    _shoppingCart.openShoppingCart(cart);
+});
 
-},{"./data":"9Iwal","./slider":"gtXmp"}],"9Iwal":[function(require,module,exports) {
+},{"./data":"9Iwal","./slider":"gtXmp","./nav":"kmbj5","./shopping-cart":"9Lmuf"}],"9Iwal":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "SNEAKER", ()=>SNEAKER
 );
 const SNEAKER = [
     {
+        title: 'Fall Limited Edition Sneakers',
+        subtitle: 'Sneaker Company',
+        price: 125,
         quantity: 0,
         gallery: [
             {
                 'id': 1,
-                'enlarged': 'images/image-product-1.jpg',
-                'thumbnail': '../src/images/image-product-1-thumbnail.jpg'
+                'enlarged': require('../images/image-product-1.jpg'),
+                'thumbnail': require('../images/image-product-1-thumbnail.jpg')
             },
             {
                 'id': 2,
-                'enlarged': 'images/image-product-2.jpg',
-                'thumbnail': '../src/images/image-product-2-thumbnail.jpg'
+                'enlarged': require('../images/image-product-2.jpg'),
+                'thumbnail': require('../images/image-product-2-thumbnail.jpg')
             },
             {
                 'id': 3,
-                'enlarged': 'images/image-product-3.jpg',
-                'thumbnail': '../src/images/image-product-3-thumbnail.jpg'
+                'enlarged': require('../images/image-product-3.jpg'),
+                'thumbnail': require('../images/image-product-3-thumbnail.jpg')
             },
             {
                 'id': 4,
-                'enlarged': 'images/image-product-4.jpg',
-                'thumbnail': '../src/images/image-product-4-thumbnail.jpg'
+                'enlarged': require('../images/image-product-4.jpg'),
+                'thumbnail': require('../images/image-product-4-thumbnail.jpg')
             }
         ]
     }
 ];
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"JacNc"}],"JacNc":[function(require,module,exports) {
+},{"../images/image-product-1.jpg":"uN0wi","../images/image-product-1-thumbnail.jpg":"6BptN","../images/image-product-2.jpg":"ahLb9","../images/image-product-2-thumbnail.jpg":"8xL0b","../images/image-product-3.jpg":"83hBP","../images/image-product-3-thumbnail.jpg":"T16S3","../images/image-product-4.jpg":"fyl8c","../images/image-product-4-thumbnail.jpg":"coIpj","@parcel/transformer-js/src/esmodule-helpers.js":"JacNc"}],"uN0wi":[function(require,module,exports) {
+module.exports = require('./helpers/bundle-url').getBundleURL('fqHw8') + "image-product-1.f2a9a7b3.jpg";
+
+},{"./helpers/bundle-url":"8YnfL"}],"8YnfL":[function(require,module,exports) {
+"use strict";
+var bundleURL = {
+};
+function getBundleURLCached(id) {
+    var value = bundleURL[id];
+    if (!value) {
+        value = getBundleURL();
+        bundleURL[id] = value;
+    }
+    return value;
+}
+function getBundleURL() {
+    try {
+        throw new Error();
+    } catch (err) {
+        var matches = ('' + err.stack).match(/(https?|file|ftp):\/\/[^)\n]+/g);
+        if (matches) // The first two stack frames will be this function and getBundleURLCached.
+        // Use the 3rd one, which will be a runtime in the original bundle.
+        return getBaseURL(matches[2]);
+    }
+    return '/';
+}
+function getBaseURL(url) {
+    return ('' + url).replace(/^((?:https?|file|ftp):\/\/.+)\/[^/]+$/, '$1') + '/';
+} // TODO: Replace uses with `new URL(url).origin` when ie11 is no longer supported.
+function getOrigin(url) {
+    var matches = ('' + url).match(/(https?|file|ftp):\/\/[^/]+/);
+    if (!matches) throw new Error('Origin not found');
+    return matches[0];
+}
+exports.getBundleURL = getBundleURLCached;
+exports.getBaseURL = getBaseURL;
+exports.getOrigin = getOrigin;
+
+},{}],"6BptN":[function(require,module,exports) {
+module.exports = require('./helpers/bundle-url').getBundleURL('fqHw8') + "image-product-1-thumbnail.c103ff29.jpg";
+
+},{"./helpers/bundle-url":"8YnfL"}],"ahLb9":[function(require,module,exports) {
+module.exports = require('./helpers/bundle-url').getBundleURL('fqHw8') + "image-product-2.c31cf31c.jpg";
+
+},{"./helpers/bundle-url":"8YnfL"}],"8xL0b":[function(require,module,exports) {
+module.exports = require('./helpers/bundle-url').getBundleURL('fqHw8') + "image-product-2-thumbnail.73a72f4d.jpg";
+
+},{"./helpers/bundle-url":"8YnfL"}],"83hBP":[function(require,module,exports) {
+module.exports = require('./helpers/bundle-url').getBundleURL('fqHw8') + "image-product-3.20fa0135.jpg";
+
+},{"./helpers/bundle-url":"8YnfL"}],"T16S3":[function(require,module,exports) {
+module.exports = require('./helpers/bundle-url').getBundleURL('fqHw8') + "image-product-3-thumbnail.b7160c8a.jpg";
+
+},{"./helpers/bundle-url":"8YnfL"}],"fyl8c":[function(require,module,exports) {
+module.exports = require('./helpers/bundle-url').getBundleURL('fqHw8') + "image-product-4.77ced84e.jpg";
+
+},{"./helpers/bundle-url":"8YnfL"}],"coIpj":[function(require,module,exports) {
+module.exports = require('./helpers/bundle-url').getBundleURL('fqHw8') + "image-product-4-thumbnail.5dcf3633.jpg";
+
+},{"./helpers/bundle-url":"8YnfL"}],"JacNc":[function(require,module,exports) {
 exports.interopDefault = function(a) {
     return a && a.__esModule ? a : {
         default: a
@@ -556,20 +650,218 @@ parcelHelpers.export(exports, "imageToLeft", ()=>imageToLeft
 );
 parcelHelpers.export(exports, "imageToRight", ()=>imageToRight
 );
+parcelHelpers.export(exports, "displayLightbox", ()=>displayLightbox
+);
+parcelHelpers.export(exports, "changeImageWithThumbnail", ()=>changeImageWithThumbnail
+);
 var _data = require("./data");
-function imageToLeft() {
-    const current = document.querySelector(".main-image");
-    const classNumber = current.classList[1];
-    const number = parseInt(classNumber);
+function imageToLeft(e) {
+    const selectedBtn = e.target;
+    let currentPic = document.querySelector('.main-photo');
+    if (selectedBtn.classList[0] === 'lightbox-left-btn') currentPic = document.querySelector('.lightbox-main-photo');
+    const num = currentPic.classList[1];
+    if (num === 'one') {
+        currentPic.setAttribute('src', _data.SNEAKER[0].gallery[3].enlarged);
+        currentPic.classList.remove(num);
+        currentPic.classList.add('four');
+    } else if (num === 'two') {
+        currentPic.setAttribute('src', _data.SNEAKER[0].gallery[0].enlarged);
+        currentPic.classList.remove(num);
+        currentPic.classList.add('one');
+    } else if (num === 'three') {
+        currentPic.setAttribute('src', _data.SNEAKER[0].gallery[1].enlarged);
+        currentPic.classList.remove(num);
+        currentPic.classList.add('two');
+    } else if (num === 'four') {
+        currentPic.setAttribute('src', _data.SNEAKER[0].gallery[2].enlarged);
+        currentPic.classList.remove(num);
+        currentPic.classList.add('three');
+    }
+    if (selectedBtn.classList[0] === 'lightbox-left-btn') activateThumbnails(currentPic);
 }
-function imageToRight() {
-    const current = document.querySelector(".main-image");
-    const number = current.classList[1];
-    current.classList.remove(classNumber);
-    number++;
-    console.log(number);
+function imageToRight(e) {
+    const selectedBtn = e.target;
+    let currentPic = document.querySelector('.main-photo');
+    if (selectedBtn.classList[0] === 'lightbox-right-btn') currentPic = document.querySelector('.lightbox-main-photo');
+    const num = currentPic.classList[1];
+    if (num === 'one') {
+        currentPic.setAttribute('src', _data.SNEAKER[0].gallery[1].enlarged);
+        currentPic.classList.remove(num);
+        currentPic.classList.add('two');
+    } else if (num === 'two') {
+        currentPic.setAttribute('src', _data.SNEAKER[0].gallery[2].enlarged);
+        currentPic.classList.remove(num);
+        currentPic.classList.add('three');
+    } else if (num === 'three') {
+        currentPic.setAttribute('src', _data.SNEAKER[0].gallery[3].enlarged);
+        currentPic.classList.remove(num);
+        currentPic.classList.add('four');
+    } else if (num === 'four') {
+        currentPic.setAttribute('src', _data.SNEAKER[0].gallery[0].enlarged);
+        currentPic.classList.remove(num);
+        currentPic.classList.add('one');
+    }
+    if (selectedBtn.classList[0] === 'lightbox-right-btn') activateThumbnails(currentPic);
+}
+function displayLightbox() {
+    const lightbox = document.querySelector('.lightbox');
+    lightbox.style.display = 'flex';
+    document.addEventListener('keydown', pressKey);
+    document.addEventListener('click', closeLightboxWithOutsideClick);
+}
+function changeImageWithThumbnail(e) {
+    const selected = e.target;
+    let photo = document.querySelector('.main-photo');
+    if (selected.classList[0] === 'lightbox-thumbnail') photo = document.querySelector('.lightbox-main-photo');
+    if (!selected.classList.contains('active')) {
+        selected.classList.toggle('active');
+        deactivateSiblingImages(selected);
+        const num = selected.classList[1];
+        if (num === 'one') photo.setAttribute('src', _data.SNEAKER[0].gallery[0].enlarged);
+        else if (num === 'two') photo.setAttribute('src', _data.SNEAKER[0].gallery[1].enlarged);
+        else if (num === 'three') photo.setAttribute('src', _data.SNEAKER[0].gallery[2].enlarged);
+        else if (num === 'four') photo.setAttribute('src', _data.SNEAKER[0].gallery[3].enlarged);
+    }
+}
+function activateThumbnails(currentPic) {
+    const num = currentPic.classList[1];
+    const allThumbnail = document.querySelectorAll('.lightbox-thumbnail');
+    for (const tbnail of allThumbnail)if (tbnail.classList[1] === num) {
+        deactivateSiblingImages(tbnail);
+        if (!tbnail.classList.contains('active')) tbnail.classList.add('active');
+    }
+}
+function deactivateSiblingImages(selected) {
+    let allImages = Array.from(document.querySelectorAll('.thumbnail'));
+    if (selected.classList[0] === 'lightbox-thumbnail') allImages = Array.from(document.querySelectorAll('.lightbox-thumbnail'));
+    const imageNumber = selected.classList[1];
+    const unselectedImages = removeTypeFromArray(allImages, imageNumber);
+    for (const image of unselectedImages)if (image.classList.contains('active')) image.classList.remove('active');
+}
+function removeTypeFromArray(arr, type) {
+    const arrWithoutType = arr.slice();
+    for(let i = 0; i < arrWithoutType.length; i++){
+        const classNumber = arrWithoutType[i].classList[1];
+        if (classNumber === type) arrWithoutType.splice(i, 1);
+    }
+    return arrWithoutType;
+}
+function pressKey(e) {
+    if (e.keyCode === 27) {
+        document.querySelector('.lightbox').style.display = 'none';
+        document.removeEventListener('keydown', pressKey);
+    }
+}
+function closeLightboxWithOutsideClick(e) {
+    if (e.target.classList.contains('lightbox-main-image') || e.target.classList.contains('lightbox') || e.target.classList.contains('lightbox-close') || e.target.classList.contains('lightbox-other-images')) document.querySelector('.lightbox').style.display = 'none';
 }
 
-},{"./data":"9Iwal","@parcel/transformer-js/src/esmodule-helpers.js":"JacNc"}]},["hkXzs","23obh"], "23obh", "parcelRequire2f07")
+},{"./data":"9Iwal","@parcel/transformer-js/src/esmodule-helpers.js":"JacNc"}],"kmbj5":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "openNavMenu", ()=>openNavMenu
+);
+parcelHelpers.export(exports, "closeNavMenu", ()=>closeNavMenu
+);
+function openNavMenu(menu) {
+    menu.classList.add('show-menu');
+}
+function closeNavMenu(menu) {
+    menu.classList.remove('show-menu');
+}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"JacNc"}],"9Lmuf":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "toggleShoppingCart", ()=>toggleShoppingCart
+);
+parcelHelpers.export(exports, "openShoppingCart", ()=>openShoppingCart
+);
+parcelHelpers.export(exports, "increaseQuantity", ()=>increaseQuantity
+);
+parcelHelpers.export(exports, "decreaseQuantity", ()=>decreaseQuantity
+);
+parcelHelpers.export(exports, "addToCart", ()=>addToCart
+);
+let cartTotal = 0;
+let shoppingCart = [];
+function toggleShoppingCart(cart) {
+    cart.classList.toggle('show-cart');
+}
+function openShoppingCart(cart) {
+    cart.classList.add('show-cart');
+}
+function increaseQuantity(product) {
+    shoppingCart = [];
+    for(let i = 0; i < product.length; i++){
+        product[i].quantity += 1;
+        return product[i].quantity;
+    }
+}
+function decreaseQuantity(product) {
+    shoppingCart = [];
+    for(let i = 0; i < product.length; i++){
+        if (product[i].quantity > 0) product[i].quantity -= 1;
+        return product[i].quantity;
+    }
+}
+function addToCart(product) {
+    cartTotal = 0;
+    for(let i = 0; i < product.length; i++){
+        shoppingCart.push(product[i].price * product[i].quantity);
+        for(let i1 = 0; i1 < shoppingCart.length; i1++)cartTotal += shoppingCart[i1];
+        renderProductInCart(product[i]);
+    }
+}
+function renderProductInCart(product) {
+    const orderSummary = document.querySelector('.order-summary');
+    const cartProduct = document.createElement('div');
+    const cartProductImage = document.createElement('img');
+    const cartProductInfo = document.createElement('div');
+    const cartProductTitle = document.createElement('h4');
+    const cartProductPriceDetails = document.createElement('div');
+    const cartProductPrice = document.createElement('span');
+    const cartProductQuantity = document.createElement('span');
+    const cartProductTotal = document.createElement('span');
+    const cartProductRemoveBtn = document.createElement('button');
+    const cartCheckout = document.createElement('button');
+    cartProduct.classList.add('cart-product');
+    cartProductImage.classList.add('cart-product-image');
+    cartProductInfo.classList.add('cart-product-info');
+    cartProductTitle.classList.add('cart-product-title');
+    cartProductPriceDetails.classList.add('cart-product-price-details');
+    cartProductPrice.classList.add('cart-product-price');
+    cartProductQuantity.classList.add('cart-product-quantity');
+    cartProductTotal.classList.add('cart-product-total');
+    cartProductRemoveBtn.classList.add('cart-product-remove-btn');
+    cartCheckout.classList.add('cart-checkout');
+    cartProductInfo.appendChild(cartProductTitle);
+    cartProductInfo.appendChild(cartProductPriceDetails);
+    cartProductPriceDetails.appendChild(cartProductPrice);
+    cartProductPriceDetails.appendChild(cartProductQuantity);
+    cartProductPriceDetails.appendChild(cartProductTotal);
+    cartProduct.appendChild(cartProductImage);
+    cartProduct.appendChild(cartProductInfo);
+    cartProduct.appendChild(cartProductRemoveBtn);
+    cartProductImage.src = product.gallery[0].thumbnail;
+    cartProductTitle.textContent = product.title;
+    cartProductPrice.textContent = `$${product.price}`;
+    cartProductQuantity.textContent = `x${product.quantity}`;
+    cartProductTotal.textContent = `$${product.price * product.quantity}`;
+    cartProductRemoveBtn.addEventListener('click', ()=>removeProductFromCart(orderSummary, cartProduct, cartCheckout)
+    );
+    cartCheckout.textContent = 'Checkout';
+    orderSummary.innerHTML = '';
+    orderSummary.appendChild(cartProduct);
+    orderSummary.appendChild(cartCheckout);
+}
+function removeProductFromCart(order, product, checkout) {
+    // Temporary dirty solution, need to implement the logic to remove checkout button only if there is 0 product in the cart
+    order.removeChild(product);
+    order.removeChild(checkout);
+    order.innerHTML = '<p>Your cart is empty</p>';
+}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"JacNc"}]},["hkXzs","23obh"], "23obh", "parcelRequire2f07")
 
 //# sourceMappingURL=index.227406fc.js.map
