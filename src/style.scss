@@ -426,15 +426,19 @@ button {
                     cursor: pointer;
                     grid-column: 2;
                     padding-bottom: 5px;
-                    transition: 0.4s;
-                    img {
-                      width: 20px;
-                      filter: $neutral-white;
+                    .lightbox-close-img {
+                        path {
+                            width: 40px;
+                            fill: $neutral-white;
+                            transition: 0.4s;
+                        }
+
+                        &:hover{
+                            path {
+                                fill: $primary; 
+                            }
+                        }
                     }
-                }
-                
-                .lightbox-close-btn:hover {
-                    color: $primary;
                 }
             }
     
