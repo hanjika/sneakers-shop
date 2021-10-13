@@ -19,7 +19,8 @@ $body-font-size: 16px;
 $main-font-family: 'Kumbh Sans', sans-serif;
 
 /* Breaking points */
-$desktop: '1440px';
+//$desktop: '1440px';
+$desktop: '700px';
 
 /* ------
 END VARIABLES DECLARATION 
@@ -405,7 +406,8 @@ button {
             .lightbox-main-photo {
                 border-radius: 15px;
                 width: 50%;
-            }
+                position: relatvive;
+          }
     
             .lightbox-slider-buttons {
                 width: 50%;

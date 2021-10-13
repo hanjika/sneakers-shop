@@ -69,7 +69,7 @@ export function displayLightbox() {
     lightbox.style.display = 'flex';
 }
 
-export function changeImage(e) {
+export function changeImageWithThumbnail(e) {
     const selected = e.target;
 
     let photo = document.querySelector('.main-photo');
