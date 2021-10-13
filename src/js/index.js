@@ -1,36 +1,69 @@
 import { SNEAKER } from './data';
-import { imageToLeft, imageToRight, changeImage, displayLightbox } from './slider';
+import { imageToLeft, imageToRight, changeImageWithThumbnail, displayLightbox } from './slider';
 import { openNavMenu, closeNavMenu } from './nav'
 import { toggleShoppingCart } from './shopping-cart'
 
 /* Slider buttons */
 
 document.querySelector(".left-btn").addEventListener('click', imageToLeft);
-
 document.querySelector(".right-btn").addEventListener('click', imageToRight);
 
-document.querySelector('.main-photo').addEventListener('click', displayLightbox);
+/* Desktop Features */
 
-const thumbnails = document.querySelectorAll('.thumbnail');
-for (const thumbnail of thumbnails) {
-    thumbnail.addEventListener('click', changeImage);
+if (window.innerWidth >= 700) {
+    document.querySelector('.main-photo').addEventListener('click', displayLightbox);
+
+    const thumbnails = document.querySelectorAll('.thumbnail');
+    for (const thumbnail of thumbnails) {
+        thumbnail.addEventListener('click', changeImageWithThumbnail);
+    }
+
+    /* Lightbox */
+
+    const lightboxCloseBtn = document.querySelector('.lightbox-close-btn');
+    lightboxCloseBtn.addEventListener('click', () => {
+        document.querySelector('.lightbox').style.display = 'none';
+    });  
+
+    const lightboxThumbnails = document.querySelectorAll('.lightbox-thumbnail');
+    for (const lbThumbnail of lightboxThumbnails) {
+        lbThumbnail.addEventListener('click', changeImageWithThumbnail);
+    }
+
+    document.querySelector(".lightbox-left-btn").addEventListener('click', imageToLeft);
+    document.querySelector(".lightbox-right-btn").addEventListener('click', imageToRight);
 }
 
-/* Lightbox */
+window.addEventListener('resize', resize);
 
-const lightboxCloseBtn = document.querySelector('.lightbox-close-btn');
-lightboxCloseBtn.addEventListener('click', () => {
-    document.querySelector('.lightbox').style.display = 'none';
-});  
+function resize() {
 
-const lightboxThumbnails = document.querySelectorAll('.lightbox-thumbnail');
-for (const lbThumbnail of lightboxThumbnails) {
-    lbThumbnail.addEventListener('click', changeImage);
+    if (window.innerWidth >= 700) {
+        document.querySelector('.main-photo').addEventListener('click', displayLightbox);
+
+        const thumbnails = document.querySelectorAll('.thumbnail');
+        for (const thumbnail of thumbnails) {
+            thumbnail.addEventListener('click', changeImageWithThumbnail);
+        }
+
+        /* Lightbox */
+
+        const lightboxCloseBtn = document.querySelector('.lightbox-close-btn');
+        lightboxCloseBtn.addEventListener('click', () => {
+            document.querySelector('.lightbox').style.display = 'none';
+        });  
+
+        const lightboxThumbnails = document.querySelectorAll('.lightbox-thumbnail');
+        for (const lbThumbnail of lightboxThumbnails) {
+            lbThumbnail.addEventListener('click', changeImageWithThumbnail);
+        }
+
+        document.querySelector(".lightbox-left-btn").addEventListener('click', imageToLeft);
+        document.querySelector(".lightbox-right-btn").addEventListener('click', imageToRight);
+    } else {
+        document.querySelector('.main-photo').removeEventListener('click', displayLightbox);
+    }
 }
-
-document.querySelector(".lightbox-left-btn").addEventListener('click', imageToLeft);
-
-document.querySelector(".lightbox-right-btn").addEventListener('click', imageToRight);
 
 /*  Nav */
 const navMobile =  document.querySelector('.navigation-menu')
