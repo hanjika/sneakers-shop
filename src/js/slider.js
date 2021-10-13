@@ -67,6 +67,9 @@ export function imageToRight(e) {
 export function displayLightbox() {
     const lightbox = document.querySelector('.lightbox');
     lightbox.style.display = 'flex';
+
+    document.addEventListener('keydown', pressKey);
+    document.addEventListener('click', closeLightboxWithOutsideClick);
 }
 
 export function changeImageWithThumbnail(e) {
@@ -134,4 +137,19 @@ function removeTypeFromArray(arr, type) {
         }
     }
     return arrWithoutType;
+}
+
+
+function pressKey(e) {
+    if (e.keyCode === 27) {
+        document.querySelector('.lightbox').style.display = 'none';
+        document.removeEventListener('keydown', pressKey);
+    }
+}
+
+function closeLightboxWithOutsideClick(e) {
+    if (e.target.classList.contains('lightbox-main-image') || e.target.classList.contains('lightbox')
+    || e.target.classList.contains('lightbox-close') || e.target.classList.contains('lightbox-other-images')) {
+        document.querySelector('.lightbox').style.display = 'none';
+    }
 }
