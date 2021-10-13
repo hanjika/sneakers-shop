@@ -19,8 +19,14 @@ $body-font-size: 16px;
 $main-font-family: 'Kumbh Sans', sans-serif;
 
 /* Breaking points */
-//$desktop: '1440px';
-$desktop: '700px';
+$desktop: '1440px';
+
+/* Z-index */
+$zIndexLightbox: 4;
+$zIndexNavMobile: 3;
+$zIndexNavDesktop: 2;
+$zIndexCart:2;
+$zIndexSlider:1;
 
 /* ------
 END VARIABLES DECLARATION 
@@ -50,7 +56,6 @@ button {
 .header,
 .main,
 .footer {
-    // flex-shrink: 0;
     @media screen and (min-width: $desktop) {
         max-width: 1200px;
         margin: 0 auto;
@@ -58,11 +63,15 @@ button {
 }
 
 .header {
+    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 2rem;
-    margin: 0;
+    padding: 1rem;
+
+    @media screen and (min-width: $desktop) {
+        padding: 2rem;
+    }
 
     .navigation {
         flex-basis: 60%;
@@ -87,16 +96,20 @@ button {
         left: 0;
         right: 0;
         bottom: 0;
+        z-index: $zIndexNavMobile;
         width: 200px;
         transform: translateX(-500px);
         background-color: $neutral-white;
         transition : .3s;
+        background-color: crimson;
 
         @media screen and (min-width: $desktop) {
             position: static;
+            z-index: $zIndexNavDesktop;
             width: auto;
             transform: translateX(0);
             background-color: transparent;
+            background-color: crimson;
         }
 
         .close-menu-btn {
@@ -166,7 +179,7 @@ button {
     .cart {
         opacity: 0;
         position: absolute;
-        left: -200px;
+        left: 0;
         top: 50px;
         width: 90%;
         margin: 0 auto;
@@ -175,7 +188,8 @@ button {
         box-shadow: 0px 0px 20px 0 rgba(0,0,0,0.1);
 
         @media screen and (min-width: $desktop) {
-
+            right: 0;
+            width: 200px;
         }
 
         .title {
@@ -299,10 +313,10 @@ button {
         height: 75%;
         display: flex;
         flex-direction: column;
-        margin: 5% 0 5% 0;
         @media screen and (min-width: $desktop) {
             flex-direction: row;
             align-items: center;
+            margin: 5% 0 5% 0;
         }
         .slider {
             @media screen and (min-width: $desktop) {
@@ -328,6 +342,7 @@ button {
                     display: flex;
                     justify-content: space-between;
                     position: absolute;
+                    z-index: $zIndexSlider;
                     button {
                         border-radius: 50%;
                         border: none;
