@@ -9,12 +9,11 @@
 - Create a functionning website from a given wireframe
 - Use some javascript features to enhance the website
 
-## The mission
+## Elements to be improved
 
-You'll have to build the following website with all the displayed features.
-
-![Sneakers webshop](./design/desktop-design.jpg)
-
-You'll find every assets in the `images` directory, and all the wireframes you need in the `design` directory.
-
-The code has to be clean (linted, prettied), try to use modules to split your code for readability.
+- Add the number of products to the cart icon
+- Remove 'checkout' action when zero items in the cart
+- Scroll to the top (the cart) when an item is added to the cart
+- Style of thumbnails when active and hovered over
+- Smoother transitions and animations
+- Check alignment in main section
