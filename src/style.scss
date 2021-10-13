@@ -30,14 +30,26 @@ END VARIABLES DECLARATION
 }
 
 body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
     background-color: $neutral-white;
     font-family: $main-font-family;
     margin: 0;
 }
 
+button {
+    background-color: transparent;
+    border: none;
+    @media screen and (min-width: $desktop) {
+        cursor: pointer
+    }
+}
+
 .header,
 .main,
 .footer {
+    flex-shrink: 0;
     @media screen and (min-width: $desktop) {
         max-width: 1200px;
         margin: 0 auto;
@@ -48,54 +60,20 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-    .actions {
-        position: relative;
-        display: flex;
-        align-items: center;
-        flex-basis: 50%;
-        justify-content: flex-end;
-    }
-
-    .shopping-cart-btn,
-    .profile-btn {
-        width: 35px;
-
-        & > img {
-            width: 100%;
-        }
-    }
-
-    .cart {
-        opacity: 0;
-        position: absolute;
-        right: 0;
-        top: 50px;
-        width: 200px;
-        height: 200px;
-        padding: .7rem;
-        background-color: $neutral-white;
-        box-shadow: 0px 0px 20px 0 rgba(0,0,0,0.1);
-
-        .title {
-            padding-bottom: 2px;
-            border-bottom: 1px solid $neutral-greyish-blue;
-        }
-    }
-
-    .show-cart {
-        opacity: 1;
-    }
+    padding: 2rem;
 
     .navigation {
-        flex-basis: 50%;
+        flex-basis: 60%;
         @media screen and (min-width: $desktop) {
+            flex-basis: 50%;
             display: flex;
             align-items: center;
         }
     }
 
     .menu-btn {
+        margin-right: .5rem;
+
         @media screen and (min-width: $desktop) {
             display: none;
         }
@@ -158,304 +136,337 @@ body {
     .show-menu {
         transform: translateX(0);
     }
+
+    .actions {
+        position: relative;
+        display: flex;
+        align-items: center;
+        flex-basis: 40%;
+        justify-content: flex-end;
+        @media screen and (min-width: $desktop){
+            flex-basis: 50%;
+        }
+    }
+
+    .shopping-cart-btn {
+        margin-right: .5rem;
+    }
+
+    .shopping-cart-btn,
+    .profile-btn {
+        width: 35px;
+
+        & > img {
+            width: 100%;
+        }
+    }
+
+    .cart {
+        opacity: 0;
+        position: absolute;
+        right: 0;
+        top: 50px;
+        width: 200px;
+        height: 200px;
+        padding: .7rem;
+        background-color: $neutral-white;
+        box-shadow: 0px 0px 20px 0 rgba(0,0,0,0.1);
+
+        .title {
+            padding-bottom: 2px;
+            border-bottom: 1px solid $neutral-greyish-blue;
+        }
+    }
+
+    .show-cart {
+        opacity: 1;
+    }
 }
 
 .main {
-    height: 100%;
     margin-bottom: 1.5rem;
-}
-
-button {
-    background-color: transparent;
-    border: none;
-
-    @media screen and (min-width: $desktop) {
-        cursor: pointer
-    }
-}
-
-.product-description {
-    padding: 2rem 0;
-
-    @media screen and (min-width: $desktop) {
-        padding: 0 4rem;
-    }
-
-    .subtitle {
-        color: $primary;
-        font-size: .75rem;
-        letter-spacing: 1px;
-        text-transform: uppercase;
-    }
-
-    .title {
-        color: $neutral-black;
-    }
-
-    .description {
-        color: $neutral-greyish-blue;
-        font-weight: 700;
-    }
-
-    .price-details {
-        display: flex;
-        align-items: center;
-        justify-content: start;
-        
+    
+    .product-description {
+        padding: 2rem;
         @media screen and (min-width: $desktop) {
-            flex-wrap: wrap;
-            margin-bottom: 1.5rem;
+            padding: 0 10rem;
         }
-    }
-
-    .price {
-        color: $neutral-black;
-        font-size: 2rem;
-        font-weight: 700;
-    }
-
-    .reduction {
-        margin: 1rem;
-        padding: .2rem .4rem;
-        border-radius: 5px;
-        background-color: $primary-variant;
-        color: $primary;
-        font-weight: 700;
-
-    }
-
-    .old-price {
-        margin-left: auto;
-        color: $neutral-greyish-blue;
-        font-weight: 700;
-        text-decoration:line-through;
-
-        @media screen and (min-width: $desktop) {
-            flex-basis: 100%;
+    
+        .subtitle {
+            color: $primary;
+            font-size: .75rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
-    }
-
-    .add-to-cart {
-        @media screen and (min-width: $desktop) {
-            display: flex;
-            justify-content: space-between;
-        }
-        .change-quantity {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem;
-            border-radius: 5px;
-            background-color: $neutral-light-greyish-blue;
-
-            @media screen and (min-width: $desktop) {
-                flex-basis: 40%;
-            }
-        }
-
-        .quantity {
+    
+        .title {
             color: $neutral-black;
+        }
+    
+        .description {
+            color: $neutral-greyish-blue;
             font-weight: 700;
         }
-
-        .add-to-cart-btn {
-            width: 100%;
-            padding: 1rem;
-            border-radius: 5px;
-            background-color: $primary;
-            color: $neutral-white;
-            font-size: 1rem;
-            font-weight: 700;
-
-            @media screen and (min-width: $desktop) {
-                flex-basis: 50%;
-            }
-        }
-
-        .cart-icon {
-            margin-right: .2rem;
-
-            path {
-                fill: $neutral-white;
-            }
-        }
-    }
-}
-
-.slider-section {
-    height: 75%;
-    display: flex;
-    flex-direction: column;
-    margin: 5% 0 5% 0;
-    @media screen and (min-width: $desktop) {
-        flex-direction: row;
-        align-items: center;
-    }
-    .slider {
-        .main-image {
+    
+        .price-details {
             display: flex;
             align-items: center;
-            justify-content: center;
-            margin: 0;
-            .main-photo {
-                width: 100%;
+            justify-content: start;
+            
+            @media screen and (min-width: $desktop) {
+                flex-wrap: wrap;
+                margin-bottom: 1.5rem;
+            }
+        }
+    
+        .price {
+            color: $neutral-black;
+            font-size: 2rem;
+            font-weight: 700;
+        }
+    
+        .reduction {
+            margin: 1rem;
+            padding: .2rem .4rem;
+            border-radius: 5px;
+            background-color: $primary-variant;
+            color: $primary;
+            font-weight: 700;
+        }
+    
+        .old-price {
+            margin-left: auto;
+            color: $neutral-greyish-blue;
+            font-weight: 700;
+            text-decoration:line-through;
+            @media screen and (min-width: $desktop) {
+                flex-basis: 100%;
+            }
+        }
+    
+        .add-to-cart {
+            @media screen and (min-width: $desktop) {
+                display: flex;
+                justify-content: space-between;
+            }
+            .change-quantity {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 1rem;
+                border-radius: 5px;
+                background-color: $neutral-light-greyish-blue;
                 @media screen and (min-width: $desktop) {
-                    border-radius: 10px;
-                    width: 50%;
-                    margin: 5% 0 5% 0;
-                    cursor: pointer;
+                    flex-basis: 40%;
                 }
             }
-
-            .slider-buttons {
+    
+            .quantity {
+                color: $neutral-black;
+                font-weight: 700;
+            }
+    
+            .add-to-cart-btn {
                 width: 100%;
+                padding: 1rem;
+                border-radius: 5px;
+                background-color: $primary;
+                color: $neutral-white;
+                font-size: 1rem;
+                font-weight: 700;
+                @media screen and (min-width: $desktop) {
+                    flex-basis: 50%;
+                }
+            }
+    
+            .cart-icon {
+                margin-right: .2rem;
+    
+                path {
+                    fill: $neutral-white;
+                }
+            }
+        }
+    }
+    
+    .slider-section {
+        height: 75%;
+        display: flex;
+        flex-direction: column;
+        margin: 5% 0 5% 0;
+        @media screen and (min-width: $desktop) {
+            flex-direction: row;
+            align-items: center;
+        }
+        .slider {
+            .main-image {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 0;
+                .main-photo {
+                    width: 100%;
+                    @media screen and (min-width: $desktop) {
+                        border-radius: 10px;
+                        width: 50%;
+                        margin: 5% 0 5% 0;
+                        cursor: pointer;
+                    }
+                }
+    
+                .slider-buttons {
+                    width: 100%;
+                    display: flex;
+                    justify-content: space-between;
+                    position: absolute;
+                    button {
+                        border-radius: 50%;
+                        border: none;
+                        background-color: $neutral-white;
+                        height: 2em;
+                        width: 2em;
+                        margin: 2%;
+                        cursor: pointer;
+                        background-size: contain;
+                        img {
+                            width: 0.5em;
+                        }
+                    }
+                    @media screen and (min-width: $desktop) {
+                        display: none;
+                    }
+                }
+            }
+    
+            .other-images {
+                display: none;
+                @media screen and (min-width: $desktop) {
+                    display: flex;
+                    justify-content: space-between;
+                    img {
+                        border-radius: 10px;
+                        max-width: 20%;
+                        cursor: pointer;
+                        margin: 0;
+                        transition: 0.4s;
+                        &:hover {
+                            opacity: 50%;
+                        }
+                    }
+                }
+    
+                .active {
+                    border: 2px solid $primary;
+                    opacity: 50%;
+                    margin: 0;
+                }
+            }
+        }
+    }
+    
+    .lightbox {
+        display: none;
+        background-color: rgba($color: #000000, $alpha: 0.5);
+        height: 100vh;
+        width: 100%;
+        z-index: 1;
+        position: fixed;
+        top: 0;
+        left: 0;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    
+        .lightbox-main-image {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+    
+            .lightbox-close {
+                width: 50%;
+                display: flex;
+                justify-content: flex-end;
+    
+                .lightbox-close-btn {
+                    color: $neutral-white;
+                    font-size: 400%;
+                    border: none;
+                    cursor: pointer;
+                    grid-column: 2;
+                    transition: 0.4s;
+                }
+                
+                .lightbox-close-btn:hover {
+                    color: $primary;
+                }
+            }
+    
+            .lightbox-main-photo {
+                border-radius: 15px;
+                width: 50%;
+            }
+    
+            .lightbox-slider-buttons {
+                width: 50%;
                 display: flex;
                 justify-content: space-between;
                 position: absolute;
+                .lightbox-left-btn {
+                    background-image: url('images/icon-previous.svg');
+                }
+    
+                .lightbox-right-btn {
+                    background-image: url('images/icon-next.svg');
+                }
+    
                 button {
                     border-radius: 50%;
                     border: none;
                     background-color: $neutral-white;
+                    background-size: 50% 50%;
+                    background-repeat: no-repeat;
+                    background-position: center;
                     height: 2em;
                     width: 2em;
                     margin: 2%;
                     cursor: pointer;
-                    background-size: contain;
-                    img {
-                        width: 0.5em;
-                    }
-                }
-                @media screen and (min-width: $desktop) {
-                    display: none;
-                }
-            }
-        }
-
-        .other-images {
-            display: none;
-            @media screen and (min-width: $desktop) {
-                display: flex;
-                justify-content: space-between;
-                img {
-                    border-radius: 10px;
-                    max-width: 20%;
-                    cursor: pointer;
-                    margin: 0;
                     transition: 0.4s;
                     &:hover {
                         opacity: 50%;
                     }
                 }
             }
-
-            .active {
-                border: 2px solid $primary;
-                opacity: 50%;
-                margin: 0;
-            }
         }
-    }
-}
-
-.lightbox {
-    display: none;
-    background-color: rgba($color: #000000, $alpha: 0.5);
-    height: 100vh;
-    width: 100%;
-    z-index: 1;
-    position: fixed;
-    top: 0;
-    left: 0;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-    .lightbox-main-image {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-
-        .lightbox-close {
-            width: 50%;
+    
+        .lightbox-other-images {
             display: flex;
-            justify-content: flex-end;
-
-            .lightbox-close-btn {
-                color: $neutral-white;
-                font-size: 400%;
-                border: none;
+            justify-content: center;
+            margin-top: 2%;
+            width: 40%;
+            img {
+                max-width: 15%;
+                border-radius: 15px;
                 cursor: pointer;
-                grid-column: 2;
-                transition: 0.4s;
-            }
-            
-            .lightbox-close-btn:hover {
-                color: $primary;
-            }
-        }
-
-        .lightbox-main-photo {
-            border-radius: 15px;
-            width: 50%;
-        }
-
-        .lightbox-slider-buttons {
-            width: 50%;
-            display: flex;
-            justify-content: space-between;
-            position: absolute;
-            .lightbox-left-btn {
-                background-image: url('images/icon-previous.svg');
-            }
-
-            .lightbox-right-btn {
-                background-image: url('images/icon-next.svg');
-            }
-
-            button {
-                border-radius: 50%;
-                border: none;
-                background-color: $neutral-white;
-                background-size: 50% 50%;
-                background-repeat: no-repeat;
-                background-position: center;
-                height: 2em;
-                width: 2em;
-                margin: 2%;
-                cursor: pointer;
+                margin: 0 2% 0 2%;
                 transition: 0.4s;
                 &:hover {
                     opacity: 50%;
                 }
             }
         }
-    }
-
-    .lightbox-other-images {
-        display: flex;
-        justify-content: center;
-        margin-top: 2%;
-        width: 40%;
-        img {
-            max-width: 15%;
-            border-radius: 15px;
-            cursor: pointer;
-            margin: 0 2% 0 2%;
-            transition: 0.4s;
-            &:hover {
-                opacity: 50%;
-            }
+    
+        .active {
+            border: 3px solid $primary;
+            opacity: 50%;
         }
-    }
-
-    .active {
-        border: 3px solid $primary;
-        opacity: 50%;
     }
 }
 
 .footer {
+    margin-top: auto;
+    padding: 1rem;
+
     .attribution { 
         font-size: 0,6875rem;
         text-align: center; 
