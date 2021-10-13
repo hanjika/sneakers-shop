@@ -85,9 +85,18 @@ function renderProductInCart (product) {
     cartProductQuantity.textContent = `x${product.quantity}`
     cartProductTotal.textContent = `$${product.price * product.quantity}`
 
+    cartProductRemoveBtn.addEventListener('click', () => removeProductFromCart(orderSummary, cartProduct, cartCheckout))
+
     cartCheckout.textContent = 'Checkout'
 
     orderSummary.innerHTML = ''
     orderSummary.appendChild(cartProduct)
     orderSummary.appendChild(cartCheckout)
+}
+
+function removeProductFromCart(order, product, checkout) {
+    // Temporary dirty solution, need to implement the logic to remove checkout button only if there is 0 product in the cart
+    order.removeChild(product)
+    order.removeChild(checkout)
+    order.innerHTML = '<p>Your cart is empty</p>'
 }
